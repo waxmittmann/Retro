@@ -1,0 +1,15 @@
+<p>user works!</p>
+
+<!-- <input type="button" text="Become Admin"> -->
+
+<div class="thoughts">
+    <li *ngFor="let thought of thoughts" (click)="onSelect(thought)">
+        {{thought.content}}
+    </li>
+</div>
+
+<div class="thoughtEditor" *ngIf="selectedThought">
+    <textarea [(ngModel)]="selectedThought.content"></textarea>
+    <!-- <textarea>{{selectedThought.content}}</textarea> -->
+    <input type="button" text="Add" (click)="newThought()">
+</div>
