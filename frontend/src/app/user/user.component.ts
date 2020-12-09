@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Thought, ThoughtType } from '../thought';
+// import { Thought, ThoughtType } from '../thought';
+import { Thought, ThoughtType } from '../../../../shared/thought';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, timer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';

@@ -6,6 +6,7 @@ import Express from "express";
 // import { path } = require("path");
 // import cookieParser from 
 import * as path from 'path';
+// import { Thought, ThoughtType } from '../../shared/thought';
 import { Thought, ThoughtType } from './thought';
 
 // import ws = require('ws');
@@ -31,7 +32,9 @@ import * as WebSocket from 'ws';
 
 var app = Express();
 const port = 3000;
-const distPath = "../../angular-retro-frontend/dist/angular-tour-of-heroes"
+// const distPath = "../../angular-retro-frontend/dist/angular-tour-of-heroes"
+const distPath = "../../frontend/dist/angular-tour-of-heroes"
+// const distPath = "../../frontend/dist/backend"
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: false }));
 app.use(Express.static(path.join(__dirname, distPath)));
@@ -39,9 +42,9 @@ app.use(Express.static(path.join(__dirname, distPath)));
 // var router = app.Router();
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', function (req, res) {
-    res.send('hello world')
-  })
+// app.get('/', function (req, res) {
+//     res.send('hello world')
+//   })
 
 // app.get('/', async (req, res) => {
 //     console.log("Hi!")

@@ -1,5 +1,5 @@
 {
-  "name": "angular-retro-frontend",
+  "name": "backend",
   "version": "0.0.0",
   "private": true,
   "main": "dist/app.js",
