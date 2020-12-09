@@ -2,23 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { RouterModule } from '@angular/router';
-
-import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component';
-import { MainComponent } from './main/main.component';
-import { SettingsComponent } from './settings/settings.component';
-import { AppHasRoleDirective } from './app-has-role.directive';
 import { HttpClientModule } from '@angular/common/http';
+
+import { AppComponent } from './components/app/app.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { UserComponent } from './components/user/user.component';
+import { MainComponent } from './components/main/main.component';
+import { AppHasRoleDirective } from './directives/app-has-role.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
     AdminComponent,
     UserComponent,
-    SettingsComponent,
     MainComponent,
     AppHasRoleDirective
   ],
@@ -27,9 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: AppComponent },      
-      { path: 'settings', component: HeroesComponent },
       // { path: 'products/:productId', component: HeroesComponent },
-      // { path: 'thingy', component: ThingyComponent },
     ]),
     HttpClientModule
   ],
@@ -37,14 +31,3 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [AppComponent],
 })
 export class AppModule { }
-
-
-// @NgModule({
-//   imports: [
-//     BrowserModule,
-//     ReactiveFormsModule,
-//     RouterModule.forRoot([
-//       { path: '', component: ProductListComponent },
-//       { path: 'products/:productId', component: ProductDetailsComponent },
-//     ])
-//   ],
