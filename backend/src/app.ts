@@ -51,6 +51,11 @@ app.use(Express.static(path.join(__dirname, distPath)));
 //     res.sendFile(path.resolve(__dirname, distPath, 'index.html'));
 // });
 
+interface Session {
+    name: string;
+  }
+
+  
 app.get('/ideas', function (req, res) {
     console.log("Hi!!!")
     res.send([{
@@ -67,6 +72,21 @@ app.get('/ideas', function (req, res) {
         type: ThoughtType.Confusing
     }])
 })
+
+var session: Session
+
+app.get('/session', function (req, res) {
+    console.log("Someone's getting a session!!!")
+    console.log(session)
+    res.send(session)
+})
+
+app.put('/session', function (req, res) {
+    console.log("Create Session!!!")
+    session = { name: "My session" } 
+    res.send(session)
+})
+
 
 const server = app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

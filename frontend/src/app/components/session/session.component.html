@@ -1,0 +1,15 @@
+
+<h1>Sessions</h1>
+
+<div *ngIf="session; else noSession">
+    Session exists!
+    Join session ${session.name}
+</div>
+<ng-template #noSession>
+    No session yet.
+    <!-- <button *ngClick="createSession()" name="Create" text="Create">Create</button> -->
+    <!-- <button *ngClick="createSession()" name="Create" text="Create">Create</button> -->
+</ng-template>
+
+<!-- <button ng-click="createSession()">Create</button> -->
+<button (click)="createSession()">Create</button>

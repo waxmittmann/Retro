@@ -1,9 +1,15 @@
 <div>
     <p>main works! </p>
 
-    <app-user *appHasRole="'user'"></app-user>
-    <!-- <app-user *appHasRole="user"></app-user> -->
-    <app-admin *appHasRole="'admin'"></app-admin>
+    <!-- <div *ngIf="session"> -->
+        <!-- <app-user *appHasRole="'user'"></app-user> -->
+        <app-user></app-user>
+        <!-- <app-user *appHasRole="user"></app-user> -->
+        <app-admin *appHasRole="'admin'"></app-admin>
+    <!-- </div> -->
+    <!-- <div *ngElse> -->
+        <!-- No session yet! -->
+    <!-- </div> -->
 
     <!-- <ng-template [appHasRole]="'user'">
         Peckerwood i pecer good

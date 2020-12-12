@@ -5,7 +5,7 @@ import { Directive, TemplateRef, ViewContainerRef, Input } from '@angular/core';
 })
 export class AppHasRoleDirective {
 
-  role: string = "user";
+  role: string = "admin";
 
   constructor(
   private templateRef: TemplateRef<any>,

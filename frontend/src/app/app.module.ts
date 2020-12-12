@@ -9,6 +9,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { UserComponent } from './components/user/user.component';
 import { MainComponent } from './components/main/main.component';
 import { AppHasRoleDirective } from './directives/app-has-role.directive';
+import { SessionComponent } from './components/session/session.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppHasRoleDirective } from './directives/app-has-role.directive';
     AdminComponent,
     UserComponent,
     MainComponent,
-    AppHasRoleDirective
+    AppHasRoleDirective,
+    SessionComponent
   ],
   imports: [
     BrowserModule,

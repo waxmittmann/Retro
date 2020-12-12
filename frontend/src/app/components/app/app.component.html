@@ -23,10 +23,21 @@ body, input[type="text"], button {
 }
 </style>
 
-TUK
 <div class="content" role="main">
   <h1>{{title}}</h1>
-  <app-main></app-main>
+  <div *ngIf="session; else noSession">
+    <app-main></app-main>
+  </div>
+  <ng-template  #noSession>
+    <app-session></app-session>
+  </ng-template>
+
+    <!-- </div> -->
+    <!-- <div *ngElse> -->
+        <!-- No session yet! -->
+    <!-- </div> -->
+
+
   <!-- <app-heroes></app-heroes> -->
   <!-- <router-outlet></router-outlet> -->
 </div>
