@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './components/app/app.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -27,7 +28,8 @@ import { SessionComponent } from './components/session/session.component';
       { path: '', component: AppComponent },      
       // { path: 'products/:productId', component: HeroesComponent },
     ]),
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

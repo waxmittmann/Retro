@@ -1,15 +1,39 @@
 
 <h1>Sessions</h1>
 
-<div *ngIf="session; else noSession">
-    Session exists!
-    Join session ${session.name}
+<!-- <ng-template *ngIf="session; else noSession">
+    Join session {{session.name}}
+    Name: <input type="text">
+</ng-template>
+<ng-template #noSession>
+    No session yet.
+    <button (click)="createSession()">Create</button>
+</ng-template>
+ -->
+
+
+ <!-- <div *ngIf="session; else noSession">
+    <div>Join session '{{session.name}}'</div>
+    Name: <input type="text" (keydown.enter)="joinSession($event)">
 </div>
 <ng-template #noSession>
     No session yet.
-    <!-- <button *ngClick="createSession()" name="Create" text="Create">Create</button> -->
-    <!-- <button *ngClick="createSession()" name="Create" text="Create">Create</button> -->
-</ng-template>
+    <button (click)="createSession()">Create</button>
+</ng-template> -->
 
-<!-- <button ng-click="createSession()">Create</button> -->
-<button (click)="createSession()">Create</button>
+'{{session}}:{{token}}'
+
+<div *ngIf="(!session && !token)">
+    No session yet.
+    <button (click)="createSession()">Create</button>
+</div>
+<div *ngIf="session && !token">
+    <div>Join session '{{session.name}}'</div>
+    Name: <input type="text" (keydown.enter)="joinSession($event)">
+</div>
+<div *ngIf="session && token">
+    <div>You have joined '{{session.name}}', your token is '{{token}}'</div>
+</div>
+
+
+ <!-- <button ng-click="createSession()">Create</button> -->

@@ -8,6 +8,19 @@ import { Session } from '../entity/session'
 //   name: string;
 // }
 
+export class JoinSessionResponse {
+  session: string
+  token: string
+}
+
+// export class JoinByName {
+//   name: string
+// }
+// export class JoinByToken {
+//   token: string
+// }
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,8 +29,11 @@ export class SessionService implements OnInit {
   constructor(private http: HttpClient) { }
 
   session: Session;
+  token: string;
 
   ngOnInit(): void {
+    if 
+
     console.log("OnInit called")
     // const ws = new WebSocket('ws://localhost:3030');
     // ws.onopen = () => { 
@@ -41,6 +57,19 @@ export class SessionService implements OnInit {
   getSession(): Observable<Session> {
     return this.http.get<Session>("/session")
   }
+
+  rejoinSession(token: string): Observable<Session> {
+    
+  }
+
+  joinSession(username: string): Observable<JoinSessionResponse> {
+  // joinSession(joinData: JoinByName | JoinByToken): Observable<JoinSessionResponse> {
+    return this.http.put<JoinSessionResponse>("/session/join", username)
+  }
+
+  // joinSession(username: string): Observable<JoinSessionResponse> {
+  //   return this.http.put<JoinSessionResponse>("/session/join", username)
+  // }
 
   pollForSession2(): Observable<Session> { 
     const poll = interval(1000).pipe(

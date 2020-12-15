@@ -1,60 +1,29 @@
-// import { Express } from "express";
 import Express from "express";
-// import Express from './Express';
-
-// import { path } from "path";
-// import { path } = require("path");
-// import cookieParser from 
 import * as path from 'path';
-// import { Thought, ThoughtType } from '../../shared/thought';
 import { Thought, ThoughtType } from './thought';
-
-// import ws = require('ws');
 import { Server } from 'ws'; 
 import * as WebSocket from 'ws'; 
-// const ws = require('ws');
-
-// import * as cookieParser from 'cookie-parser';
-// import * as logger from 'morgan';
-// import * as Logger from 'morgan';
-// import * as CookieParser from 'cookie-parser';
-
-// import { cookieParser } from 'cookie-parser';
-// import logger from 'morgan';
-
-// var express = require('express');
-// var path = require('path');
-// var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
-
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
 
 var app = Express();
 const port = 3000;
-// const distPath = "../../angular-retro-frontend/dist/angular-tour-of-heroes"
 const distPath = "../../frontend/dist/angular-tour-of-heroes"
-// const distPath = "../../frontend/dist/backend"
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: false }));
 app.use(Express.static(path.join(__dirname, distPath)));
-
-// var router = app.Router();
-
-// respond with "hello world" when a GET request is made to the homepage
-// app.get('/', function (req, res) {
-//     res.send('hello world')
-//   })
-
-// app.get('/', async (req, res) => {
-//     console.log("Hi!")
-//     res.sendFile(path.resolve(__dirname, distPath, 'index.html'));
-// });
+// app.use(Express.body)
 
 interface Session {
     name: string;
   }
 
+
+export class JoinByName {
+    name: string
+}
+
+export class JoinByToken {
+    token: string
+}
   
 app.get('/ideas', function (req, res) {
     console.log("Hi!!!")
@@ -74,6 +43,8 @@ app.get('/ideas', function (req, res) {
 })
 
 var session: Session
+var usersToTokens: Map<string, string> = new Map<string, string>()
+var tokensToUsers: Map<string, string> = new Map<string, string>()
 
 app.get('/session', function (req, res) {
     console.log("Someone's getting a session!!!")
@@ -87,6 +58,20 @@ app.put('/session', function (req, res) {
     res.send(session)
 })
 
+app.put('/session/join', function (req, res) {
+    console.log("Joining session!!!")
+    if (session == null) { 
+        return res.status(400).send({
+            message: 'No session yet!'
+         });
+    }
+    let token = Math.random().toString(36).substring(7)
+    console.log("random", token)
+    usersToTokens.set(req.body, token)
+    tokensToUsers.set(token, req.body)
+    // res.send(session)
+    res.send({ "session": session, "token": token})
+})
 
 const server = app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
