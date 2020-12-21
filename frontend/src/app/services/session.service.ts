@@ -32,7 +32,6 @@ export class SessionService implements OnInit {
   token: string;
 
   ngOnInit(): void {
-    if 
 
     console.log("OnInit called")
     // const ws = new WebSocket('ws://localhost:3030');
@@ -47,6 +46,11 @@ export class SessionService implements OnInit {
     //   console.log(session)
     //   this.session = session;
     // });
+  }
+
+
+  token(): string {
+    return localStorage.get("token")  
   }
 
 
